@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>NikolaisMedia</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+			background-color: #f7f7f7;
+		}
+		header {
+			background-color: rgb(5, 0, 108);
+			color: #ffffff;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 10px 20px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 1;
+		}
+		header img {
+			height: 50px;
+		}
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+		}
+		nav li {
+			margin-right: 20px;
+			cursor: pointer;
+		}
+		nav li:hover {
+			color: #ffc107;
+		}
+		.container {
+			max-width: 1200px;
+			margin: 80px auto;
+			padding: 0 20px;
+			text-align: center;
+			position: relative;
+			z-index: 2;
+		}
+		h1 {
+			font-size: 3em;
+			margin-bottom: 30px;
+			color: #333333;
+			text-shadow: 2px 2px #ffffff;
+		}
+		h2 {
+			font-size: 2em;
+			margin-bottom: 20px;
+			color: #333333;
+		}
+		p {
+			margin-bottom: 30px;
+			color: #333333;
+			font-size: 1.2em;
+			line-height: 1.8;
+		}
+		.button {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: #ffc107;
+			color: #ffffff;
+			font-size: 1.2em;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			text-decoration: none;
+			box-shadow: 2px 2px #333333;
+			transition: all 0.3s ease-in-out;
+		}
+		.button:hover {
+			background-color: #333333;
+			color: #ffc107;
+			box-shadow: none;
+		}
+		.about-img {
+			max-width: 100%;
+			height: auto;
+			margin-bottom: 30px;
+		}
+		.services {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 80px;
+		}
+		.service {
+			margin-right: 20px;
+			margin-bottom: 20px;
+			padding: 20px;
+			background-color: #ffffff;
+			box-shadow: 2px 2px #333333;
+			flex-basis: calc(33.33% - 20px);
+			max-width: calc(33.33% - 20px);
+			text-align: center;
+		}
+		.service:last-child {
+			margin-right: 0;
+		}
+		.service h3 {
+			font-size: 1.5em;
+			margin-bottom: 10px;
+			color: #333333;
+		}
+		.service p
+		{
+			font-size: 1.2em;
+			color: #555555;
+			margin-bottom: 15px;
+			line-height: 1.5;
+		}
+		.service .price {
+			font-size: 1.5em;
+			color: #1a1a1a;
+			font-weight: bold;
+		}
+	
+		/* Contact Section */
+		.contact {
+			background-color: #f2f2f2;
+			padding: 50px 0;
+		}
+	
+		.contact h2 {
+			font-size: 2.5em;
+			margin-bottom: 30px;
+			color: #333333;
+			text-align: center;
+		}
+	
+		.contact button {
+			background-color: #333333;
+			color: #ffffff;
+			padding: 15px 30px;
+			border-radius: 5px;
+			border: none;
+			font-size: 1.2em;
+			cursor: pointer;
+			transition: all 0.3s ease-in-out;
+		}
+	
+		.contact button:hover {
+			background-color: #555555;
+			transform: translateY(-2px);
+		}
+	
+		/* Footer Section */
+		footer {
+			background-color: #333333;
+			color: #ffffff;
+			padding: 50px 0;
+		}
+	
+		.footer-container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+		}
+	
+		.footer-left {
+			flex: 1 1 60%;
+			margin-right: 50px;
+		}
+	
+		.footer-right {
+			flex: 1 1 30%;
+		}
+	
+		.footer-left img {
+			max-width: 100%;
+			height: auto;
+			margin-bottom: 30px;
+		}
+	
+		.footer-left p {
+			font-size: 1.2em;
+			line-height: 1.5;
+			margin-bottom: 30px;
+		}
+	
+		.footer-left h3 {
+			font-size: 1.5em;
+			margin-bottom: 20px;
+			color: #ffffff;
+		}
+	
+		.footer-left ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+	
+		.footer-left li {
+			margin-bottom: 10px;
+			font-size: 1.2em;
+			color: #cccccc;
+		}
+	
+		.footer-left a {
+			color: #cccccc;
+			text-decoration: none;
+			transition: all 0.3s ease-in-out;
+		}
+	
+		.footer-left a:hover {
+			color: #ffffff;
+		}
+	
+		.footer-right h3 {
+			font-size: 1.5em;
+			margin-bottom: 20px;
+			color: #ffffff;
+		}
+	
+		.footer-right form {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	
+		.footer-right input[type="email"] {
+			flex: 1 1 70%;
+			padding: 10px;
+			margin-right: 10px;
+			border: none;
+			border-radius: 5px;
+		}
+	
+		.footer-right input[type="submit"] {
+			flex: 1 1 20%;
+			background-color: #ffffff;
+			color: #333333;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: all 0.3s ease-in-out;
+		}
+		/* Contact section */
+.contact {
+	background-color: #f2f2f2;
+	padding: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.contact-form {
+	flex-basis: 40%;
+}
+
+.contact-form h2 {
+	font-size: 2em;
+	margin-bottom: 20px;
+	color: #333333;
+}
+
+.contact-form input[type="text"], 
+.contact-form input[type="email"], 
+.contact-form textarea {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #ffffff;
+	color: #333333;
+}
+
+.contact-form textarea {
+	resize: none;
+	height: 200px;
+}
+
+.contact-form input[type="submit"] {
+	background-color: #333333;
+	color: #ffffff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.contact-info {
+	flex-basis: 50%;
+	margin-left: 50px;
+}
+
+.contact-info h2 {
+	font-size: 2em;
+	margin-bottom: 20px;
+	color: #333333;
+}
+
+.contact-info p {
+	font-size: 1.5em;
+	margin-bottom: 20px;
+	color: #333333;
+	line-height: 1.5;
+}
+
+.contact-info .address {
+	margin-bottom: 20px;
+}
+
+.contact-info .phone {
+	margin-bottom: 20px;
+}
+
+.contact-info .email {
+	margin-bottom: 20px;
+}
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+	.container {
+		flex-direction: column;
+		padding: 20px;
+	}
+	
+	.nav {
+		flex-direction: column;
+		margin-bottom: 20px;
+	}
+	
+	.nav li {
+		width: 100%;
+		text-align: center;
+		margin-bottom: 10px;
+	}
+	
+	.header {
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.header h1 {
+		margin-bottom: 20px;
+	}
+	
+	.service {
+		flex-basis: 100%;
+		margin-bottom: 20px;
+	}
+	
+	.contact {
+		flex-direction: column;
+		padding: 20px;
+	}
+	
+	.contact-info {
+		margin-left: 0;
+	}
+} 
+</style>
+</head>
+<body>
+	<div class="container">
+		<header class="header">
+			<h1>NikolaisMedia</h1>
+			<nav class="nav">
+				<div class="nav-toggle" onclick="toggleNav()">&#9776;</div>
+				<ul>
+					<li onclick="showHome()">Home</li>
+					<li onclick="showAbout()">About us</li>
+					<li onclick="showServices()">Services</li>
+					<li onclick="showContact()">Contact us</li>
+				</ul>
+			</nav>
+		</header>
+		<section class="home" id="home">
+			<h2>Welcome to NikolaisMedia</h2>
+				<div class="services">
+					<h2>Our Services:</h2><hr>
+					<div class="service">
+						<h3>Advertising</h3>
+						<p>Starting from $10 and going up to $9999 depending on the customer's request, our advertising services are customized to fit your needs. Whether you're looking for social media advertising or display advertising, we can help you reach your target audience and increase your brand's visibility.</p>
+					</div>
+					<div class="service">
+						<h3>Website Development</h3>
+						<p>We offer customized website development services to help businesses create a professional and effective online presence. Our team of developers work closely with our clients to create websites that are tailored to their specific needs. Our packages include:</p>
+						<ul>
+							<li>Basic - $49.99</li>
+							<li>Starter - $149.99</li>
+							<li>Professional - $799.99</li>
+						</ul>
+						<p>No matter which package you choose, our team will work closely with you to ensure that your website meets your expectations and helps you achieve your online goals. Contact us today to learn more about our website development services.</p>
+					</div>
+					<div class="service">
+						<h3>Logo Design</h3>
+						<p>Our logo design services are available in three packages, starting from:</p>
+						<ul>
+							<li>Basic - $4.99</li>
+							<li>Starter - $19.99</li>
+							<li>Professional - $99.99</li>
+						</ul>
+						<p>Our team of designers will work closely with you to create a unique and memorable logo that represents your brand. Contact us today to learn more about our logo design services.</p>
+					</div>
+				</div>
+			</section>
+			<section class="about" id="about">
+				<h2>About Us</h2>
+				<p>NikolaisMedia is a Social Media Marketing agency that specializes in providing customized advertising, website development, and logo design services. Our team of experts work closely with our clients to understand their unique needs and create solutions that help them achieve their online goals. We pride ourselves on our attention to detail and our ability to deliver high-quality work that exceeds our clients' expectations. Contact us today to learn more about how we can help you grow your business online.</p>
+			</section>
+			
+			<section class="contact" id="contact">
+				<h2>Contact Us</h2>
+				<form id="my-form" onsubmit="sendEmail(); return false;">
+					<input type="text" id="name" placeholder="Name" required>
+					<input type="email" id="email" placeholder="Email" required>
+					<textarea id="message" placeholder="Message"></textarea>
+					<input type="submit" value="Send">
+				</form>
+			</section>
+			
+			<footer>
+				<div class="footer-left">
+					<p>&copy; 2023 NikolaisMedia. All rights reserved.</p>
+				</div>
+				<div class="footer-right">
+					<input type="submit" value="Contact Us">
+				</div>
+			</footer>
+			
+			<script>
+				const menuBtn = document.querySelector('.menu-btn');
+				const menu = document.querySelector('.menu');
+				const menuNav = document.querySelector('.menu-nav');
+				const navItems = document.querySelectorAll('.nav-item');
+				let showMenu = false;
+
+menuBtn.addEventListener('click', toggleMenu);
+
+function toggleMenu() {
+  if (!showMenu) {
+    menuBtn.classList.add('close');
+    menu.classList.add('show');
+    menuNav.classList.add('show');
+    navItems.forEach(item => item.classList.add('show'));
+
+    showMenu = true;
+  } else {
+    menuBtn.classList.remove('close');
+    menu.classList.remove('show');
+    menuNav.classList.remove('show');
+    navItems.forEach(item => item.classList.remove('show'));
+
+    showMenu = false;
+  }
+}
+    function sendEmail() {
+        var name = document.getElementById('name').value;
+        var email = "nikolaismedia@gmail.com";
+        var message = document.getElementById('message').value;
+        var subject = encodeURIComponent(document.title);
+        var body = encodeURIComponent(message);
+        var mailToLink = "https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=" + email + "&subject=" + subject + "&body=" + body;
+        window.location.href = mailToLink;
+    }
+</script>
+</body>
+</html>
+				
